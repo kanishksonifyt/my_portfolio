@@ -31,7 +31,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="w-[99vw] md:w-[98.7vw] bg-black text-white h-fit">
+    <div className="w-[99vw] md:w-[98.7vw] bg-black text-white h-fit cursor-none">
       <div className="bg-black w-full overflow-x-hidden text-white h-fit">
         <span className="fixed z-50 flex left-1/2 -translate-x-1/2">
           <Navbar />

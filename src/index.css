@@ -206,6 +206,7 @@ html {
   scroll-behavior: smooth;
   background: #000;
   color: #fff;
+  cursor: none; /* Hide default cursor */
 }
 
 /* width */
@@ -276,6 +277,10 @@ input[type="number"] {
   bottom: 0;
   right: 0;
   cursor: se-resize;
+}
+
+input , textarea {
+  cursor: none;
 }
 
 /* Fix for layout container */

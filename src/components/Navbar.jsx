@@ -1,13 +1,15 @@
-import  { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 // import mymemoji from "../public/images/1718656650065j77dnhl1-removebg-preview.png";
 import { Link } from "react-router-dom";
-const Navbar = ({clicked ,updateClickedfive ,setclicked}) => {
+import { motion } from "framer-motion";
+import PropTypes from "prop-types";
+import { AnimatePresence } from "framer-motion";
+import { X } from "lucide-react"; // Assuming you have lucide-react installed for icons
+
+const Navbar = ({ clicked, updateClickedfive, setclicked }) => {
   const [showmwnu, setshowmwnu] = useState(false);
-  const [showsocial,setshowsocial ] = useState(false)
+  const [showsocial, setshowsocial] = useState(false);
   const timeoutRef = useRef(null);
-
-
-
 
   const menudisplayfunction = () => {
     if (timeoutRef.current) {
@@ -16,36 +18,31 @@ const Navbar = ({clicked ,updateClickedfive ,setclicked}) => {
     setshowmwnu(true);
   };
 
-
-  
-
-  const socialhandle =[
+  const SocialLinks = [
     {
-      platform : "instagram",
-      id: 'https://www.instagram.com/kanishk____soni/',
-      image : 'https://i.imgur.com/CkyG9A4.png'
+      platform: "instagram",
+      id: "https://www.instagram.com/kanishk____soni/",
+      image: "https://i.imgur.com/CkyG9A4.png",
     },
     {
-      platform : "github",
-      id: 'https://github.com/kanishk1122',
-      image : 'https://i.imgur.com/WhiHneB.png'
+      platform: "github",
+      id: "https://github.com/kanishk1122",
+      image: "https://i.imgur.com/WhiHneB.png",
     },
     {
-      platform : "Linkedin",
-      id: 'https://www.linkedin.com/in/kanishk-soni-8047a2272/',
-      image : 'https://i.imgur.com/onpE3Dq.png'
-    }
-  ]
+      platform: "Linkedin",
+      id: "https://www.linkedin.com/in/kanishk-soni-8047a2272/",
+      image: "https://i.imgur.com/onpE3Dq.png",
+    },
+  ];
 
-  const resetwebpage=()=>{
-    const resetClicked = clicked.map(item => {
+  const resetwebpage = () => {
+    const resetClicked = clicked.map((item) => {
       const key = Object.keys(item)[0];
       return { [key]: false };
     });
     setclicked(resetClicked);
-
-      
-  }
+  };
 
   const startHideMenuTimeout = () => {
     if (timeoutRef.current) {
@@ -64,26 +61,31 @@ const Navbar = ({clicked ,updateClickedfive ,setclicked}) => {
     };
   }, []);
 
-  const controlshowsocailpanel =()=>{
-    setshowsocial(()=>!showsocial)
-  }
-
+  const controlshowsocailpanel = () => {
+    setshowsocial(() => !showsocial);
+  };
 
   return (
-    <div className="w-full h-[10vh] pt-12 relative flex gap-6 justify-center items-center">
+    <motion.div
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
+      className="w-full h-[10vh] pt-12 relative flex gap-6 justify-center items-center"
+    >
       {/* <div className="w-[50px] relative h-[50px] flex justify-center items-center rounded-full drop-shadow-xl bg-zinc-800">
         <img src={mymemoji} className="w-[75%] h-[75%] object-cover" alt="" />
       </div> */}
       <div className="px-6 py-3 ml-20 gap-7 drop-shadow-xl bg-zinc-800/30 hover:bg-zinc-800/50 backdrop-blur-xl w-fit h-fit rounded-full flex justify-center items-center transition-all duration-300">
-        <Link 
-          onClick={()=>resetwebpage()}
-          to='/'
-          className="relative group"
-        >
-          <h1 className="text-xl font-semibold transition-all duration-300 hover:scale-110">Home</h1>
+        <Link onClick={() => resetwebpage()} to="/" className="relative group">
+          <h1 className="text-xl font-semibold transition-all duration-300 hover:scale-110">
+            Home
+          </h1>
           <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-white group-hover:w-full transition-all duration-300"></span>
         </Link>
-        <img src='https://lh3.google.com/u/0/d/1WakUNA7heGXBTcVx7SBgMaG-ejyJWD4d=w740-h609-iv1' className="w-[10px] h-[10px]" />
+        <img
+          src="https://lh3.google.com/u/0/d/1WakUNA7heGXBTcVx7SBgMaG-ejyJWD4d=w740-h609-iv1"
+          className="w-[10px] h-[10px]"
+        />
         <div>
           <div
             onMouseEnter={menudisplayfunction}
@@ -114,61 +116,100 @@ const Navbar = ({clicked ,updateClickedfive ,setclicked}) => {
 
           <div
             onMouseEnter={menudisplayfunction}
-            onMouseLeave={()=>setshowmwnu(false)}
-            
-            className={`flex flex-col justify-center items-center bg-zinc-800/90 backdrop-blur-xl left-[5vw] top-[13vh] rounded-2xl absolute transition-all duration-500 ${
-              showmwnu 
-                ? "max-h-40 max-w-[150px] p-2 border-white/20 border-2 opacity-100 translate-y-0" 
+            onMouseLeave={() => setshowmwnu(false)}
+            className={`flex flex-col justify-center items-center  backdrop-blur-xl left-[5vw] top-[13vh] rounded-2xl absolute transition-all duration-500 ${
+              showmwnu
+                ? "max-h-40 max-w-[150px] p-2   opacity-100 translate-y-0"
                 : "max-h-0 p-0 max-w-0 overflow-hidden opacity-0 -translate-y-4"
             }`}
           >
-            <div className="w-full text-center">
-              <button 
-                onClick={updateClickedfive}
-                className="w-full py-2 hover:bg-zinc-700/50 rounded-lg transition-all duration-300"
+            <AnimatePresence>
+              <motion.div
+                initial={{ opacity: 0, y: -10, height: 0 }}
+                animate={{ opacity: 1, y: 0, height: "auto" }}
+                exit={{ opacity: 0, y: -10, height: 0 }}
+                transition={{ duration: 0.3 }}
+                className=" bg-zinc-800/90 border border-white/20 backdrop-blur-xl rounded-2xl overflow-hidden w-[180px] z-50"
+                onMouseEnter={() => setshowmwnu(true)}
+                onMouseLeave={() => setshowmwnu(false)}
               >
-                <pre className="font-['Roboto']">Contact me</pre>
-              </button>
-            </div>
-            <hr className="border-zinc-600 border w-full rounded-full my-2" />
-            <div className="w-full text-center">
-              <button
-                onClick={()=>controlshowsocailpanel()}
-                className="w-full py-2 hover:bg-zinc-700/50 rounded-lg transition-all duration-300"
-              >
-                Social
-              </button>
-            </div>
+                <button
+                  onClick={updateClickedfive}
+                  className="w-full py-3 hover:bg-zinc-700/50 transition-all"
+                >
+                  <pre className="">Contact me</pre>
+                </button>
+                <hr className="border-zinc-600" />
+                <button
+                  onClick={controlshowsocailpanel}
+                  className="w-full py-3 hover:bg-zinc-700/50 transition-all"
+                >
+                  Social
+                </button>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </div>
-     
-      <div
-        onClick={()=>controlshowsocailpanel()}
-        className={`fixed w-screen h-screen transition-all duration-500 ${
-          showsocial 
-            ? 'bg-[rgba(0,0,0,0.7)] backdrop-blur-[8px] opacity-100' 
-            : 'opacity-0 pointer-events-none'
-        } top-0 -left-[40vw] flex justify-center items-center`}
-      >
-        <div className={`w-1/2 max-w-[400px] px-3 py-2 rounded-2xl bg-zinc-900/90 h-[50vh] flex flex-col gap-4 justify-center items-center transition-all duration-500 transform ${
-          showsocial ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
-        }`}>
-          {socialhandle.map((item,index)=>(
-            <a 
-              target="_blank"  
-              href={item.id} 
-              key={index} 
-              className="w-full hover:bg-zinc-800/50 rounded-xl p-4 flex justify-evenly items-center transition-all duration-300 transform hover:scale-105"
+
+      <AnimatePresence>
+        {showsocial && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 flex items-center justify-center top-[40vh] bg-black/70 backdrop-blur-md"
+            onClick={controlshowsocailpanel}
+          >
+            {/* Modal */}
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 200, damping: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-[90%] max-w-md p-6 bg-zinc-900/90 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl flex flex-col items-center gap-6"
             >
-              <img src={item.image} className="w-[50px] h-[50px] object-contain" alt="" />
-              <p className="text-xl font-semibold">{item.platform}</p>
-            </a>
-          ))}
-        </div>
-      </div>
-    </div>
+              {/* Close Button */}
+              <button
+                onClick={controlshowsocailpanel}
+                className="absolute top-3 right-3 text-zinc-400 hover:text-white"
+              >
+                <X size={20} />
+              </button>
+
+              <h2 className="text-2xl font-bold text-white">Connect With Me</h2>
+
+              <div className="w-full flex flex-col gap-4">
+                {SocialLinks.map((item, index) => (
+                  <motion.a
+                    key={index}
+                    whileHover={{ scale: 1.05 }}
+                    href={item.id}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full flex items-center gap-4 px-4 py-3 bg-zinc-800/50 hover:bg-zinc-700/60 rounded-xl text-white transition"
+                  >
+                    <div className="bg-zinc-700/40 p-2 rounded-full">
+                      {item.icon}
+                    </div>
+                    <p className="text-lg font-medium">{item.platform}</p>
+                  </motion.a>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
+};
+
+Navbar.propTypes = {
+  clicked: PropTypes.array.isRequired,
+  updateClickedfive: PropTypes.func.isRequired,
+  setclicked: PropTypes.func.isRequired,
 };
 
 export default Navbar;

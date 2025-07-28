@@ -14,6 +14,7 @@ import TextTransition, { presets } from "react-text-transition";
 import Clock from "./Clock";
 import Projects from "./Projects";
 import Contact from "./Contact";
+import PropTypes from "prop-types";
 
 gsap.registerPlugin(ScrollTrigger);
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
@@ -301,10 +302,11 @@ const Computerview = () => {
     }, []);
 
     return (
-      <div id="currentDateTime">
+      <div id="Time">
         <div className="text-6xl font-bold"> {currentDateTime.day}</div>
         <div className="text-6xl font-bold"> {currentDateTime.time}</div>
-min   </div>
+        min{" "}
+      </div>
     );
   }
 
@@ -326,69 +328,39 @@ min   </div>
     );
   };
 
-  // Mac-style button component
   const MacStyleCloseButton = ({ onClick, onMouseEnter, onMouseLeave }) => (
     <div
       className="mac-buttons-container absolute left-[2%] top-3 z-50"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      id="Close"
     >
-      <div className="mac-close-button" onClick={onClick} />
-      <div className="mac-minimize-button" />
-      <div className="mac-maximize-button" />
+      <div className="mac-close-button" title="close" onClick={onClick} />
+      {/* <div className="mac-minimize-button" />
+      <div className="mac-maximize-button" /> */}
     </div>
   );
 
-  const getmouseexitfromfirstwindow = () => {
-    setfirstwindowhovervalue(
-      <>
-        <p>
-          Hey there! I'm <span className="font-bold ">Kanishk Soni</span>, an
-          18-year-old coding enthusiast hailing from the vibrant city of Jaipur.
-          Coding has been my passion for{" "}
-          <span className="font-semibold">{countdown} days</span>, and in that
-          time, I've brought several exciting projects to life. While I've
-          completed many, I've highlighted a few of my favorites here. Curious
-          to see more? Dive into my GitHub to explore the full spectrum of my
-          work. I hope you enjoy browsing through my portfolio as much as I
-          enjoyed creating it!
-        </p>
-      </>
-    );
-  };
-
-  const [firstwindowhovervalue, setfirstwindowhovervalue] = useState(
-    <>
-      <p>
-        Hey there! I'm <span className="font-bold">Kanishk Soni</span>, an
-        18-year-old coding enthusiast hailing from the vibrant city of Jaipur.
-        Coding has been my passion for{" "}
-        <span className="font-semibold">{countdown} days</span>, and in that
-        time, I've brought several exciting projects to life. While I've
-        completed many, I've highlighted a few of my favorites here. Curious to
-        see more? Dive into my GitHub to explore the full spectrum of my work. I
-        hope you enjoy browsing through my portfolio as much as I enjoyed
-        creating it!
-      </p>
-    </>
-  );
-
-  const getmouseenteronfirstwindow = () => {
-    setfirstwindowhovervalue(
-      <>
-        <p className="text-red-400">Click to view more about me!</p>
-      </>
-    );
+  MacStyleCloseButton.propTypes = {
+    onClick: PropTypes.func.isRequired,
+    onMouseEnter: PropTypes.func,
+    onMouseLeave: PropTypes.func,
   };
 
   return (
     <motion.div
-      ref={constraintsRef}
+      // ref={constraintsRef}
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.2,
+        scale: { type: "spring", visualDuration: 0.4, bounce: 0.6 },
+      }}
       className={`${
         clicked.one || clicked.four || clicked.three || clicked.five
           ? "w-[98vw] h-full flex overflow-x-hidden justify-center items-center"
           : "w-[75vw] h-[75vh] items-start flex flex-wrap justify-start"
-      } bg-zinc-900 relative overflow-hidden gap-2 rounded-2xl p-3 duration-500`}
+      } bg-zinc-900 relative overflow-hidden gap-2 rounded-2xl p-3 duration-500 `}
     >
       {/* About section with Mac-style close button */}
       <motion.div
@@ -410,7 +382,7 @@ min   </div>
         } ${
           clicked.one
             ? "w-[97.6vw] h-fit px-4 bg-zinc-500  "
-            : "w-[70%] backdrop-blur-xl cursor-pointer h-1/2 overflow-hidden justify-start  gap-4 items-start"
+            : "w-[70%] backdrop-blur-xl cursor-none h-1/2 overflow-hidden justify-start  gap-4 items-start"
         }  p-3    bg-zinc-800/50 rounded-xl ${
           draggedComponent === "about" ? "z-50" : ""
         }`}
@@ -480,9 +452,8 @@ min   </div>
           </div>
         ) : (
           <div
-            onMouseEnter={() => getmouseenteronfirstwindow()}
-            onMouseLeave={() => getmouseexitfromfirstwindow()}
-            className="duration-300 w-full h-full flex cursor-pointer justify-start p-3 gap-4 items-start bg-transparent backdrop-blur-xl rounded-xl"
+            id="about"
+            className="duration-300 w-full h-full flex cursor-none justify-start p-3 gap-4 items-start bg-transparent backdrop-blur-xl rounded-xl"
           >
             <div className="rounded-2xl  overflow-hidden w-[25%] h-full">
               <PixelTransition
@@ -490,7 +461,7 @@ min   </div>
                   <img
                     src={mypic}
                     alt="default pixel transition content, a cat!"
-                    className="w-full duration-200 h-full object-cover"
+                    className="w-full duration-200 h-full object-cover "
                   />
                 }
                 secondContent={
@@ -527,17 +498,17 @@ min   </div>
               <p className="md:text-[13px] lg:text-[1vw] text-center">
                 <>
                   <p>
-                    Hey there! I'm{" "}
+                    Hey there! I&apos;m{" "}
                     <span className="font-bold ">Kanishk Soni</span>, an
                     18-year-old coding enthusiast hailing from the vibrant city
                     of Jaipur. Coding has been my passion for{" "}
                     <span className="font-semibold">{countdown} days</span>, and
-                    in that time, I've brought several exciting projects to
-                    life. While I've completed many, I've highlighted a few of
-                    my favorites here. Curious to see more? Dive into my GitHub
-                    to explore the full spectrum of my work. I hope you enjoy
-                    browsing through my portfolio as much as I enjoyed creating
-                    it!
+                    in that time, I&apos;ve brought several exciting projects to
+                    life. While I&apos;ve completed many, I&apos;ve highlighted
+                    a few of my favorites here. Curious to see more? Dive into
+                    my GitHub to explore the full spectrum of my work. I hope
+                    you enjoy browsing through my portfolio as much as I enjoyed
+                    creating it!
                   </p>
                 </>
               </p>
@@ -561,7 +532,7 @@ min   </div>
           // Visual effect for dragging
           zIndex: 50,
         }}
-        className={`bg-zinc-800/50 flex cursor-pointer duration-300 backdrop-blur-2xl justify-center items-center p-3 rounded-xl ${
+        className={`bg-zinc-800/50 flex cursor-none duration-300 backdrop-blur-2xl justify-center items-center p-3 rounded-xl ${
           clicked.one || clicked.three || clicked.five
             ? "hidden"
             : "w-[29%] h-1/2"
@@ -603,7 +574,7 @@ min   </div>
   ${
     clicked.three
       ? "w-[97.6vw] pt-10 min-h-screen  h-full bg-zinc-800"
-      : "w-[30%] h-1/2 cursor-pointer"
+      : "w-[30%] h-1/2 cursor-none"
   }
      backdrop-blur-2xl relative overflow-hidden  rounded-xl ${
        draggedComponent === "projects" ? "z-50" : ""
@@ -620,7 +591,7 @@ min   </div>
             <Projects />
           </div>
         ) : (
-          <div>
+          <div id="Projects">
             <video
               src={video}
               className="w-full h-full object-cover "
@@ -659,6 +630,7 @@ min   </div>
         } bg-zinc-900/50  backdrop-blur-2xl flex flex-wrap rounded-xl ${
           draggedComponent === "links" ? "z-50" : ""
         }`}
+        id="Links"
       >
         <div className="flex h-1/2 w-1/2 justify-center items-center">
           <p className="text-5xl  gap-2 font-bold  ">
@@ -668,10 +640,12 @@ min   </div>
           </p>
           <span className="text-9xl  -mt-10 ">:</span>
         </div>
-        <div className="w-1/2 h-1/2 ">
+        <div className="w-1/2 h-1/2 cursor-none ">
           <a
             target="Black_"
             href="https://www.linkedin.com/in/kanishk-soni-8047a2272/"
+            className="cursor-none"
+            id="linkedin-link"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -684,8 +658,13 @@ min   </div>
             </svg>
           </a>
         </div>
-        <div className="w-1/2 h-1/2 ">
-          <a target="Black_" href="https://www.instagram.com/kanishk____soni/">
+        <div className="w-1/2 h-1/2 cursor-none ">
+          <a
+            target="Black_"
+            href="https://www.instagram.com/kanishk____soni/"
+            className="cursor-none"
+            id="instagram-link"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="100%"
@@ -697,8 +676,13 @@ min   </div>
             </svg>
           </a>
         </div>
-        <div className="w-1/2 h-1/2 ">
-          <a target="Black_" href="https://github.com/kanishk1122">
+        <div className="w-1/2 h-1/2  cursor-none">
+          <a
+            target="Black_"
+            href="https://github.com/kanishk1122"
+            className="cursor-none"
+            id="github-link"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="100%"
@@ -749,9 +733,12 @@ min   </div>
             <Contact />
           </div>
         ) : (
-          <div className="text-7xl flex justify-start items-center cursor-pointer w-full h-full ">
+          <div
+            className="text-7xl flex justify-start items-center cursor-none w-full h-full "
+            id="Contact"
+          >
             Contact <br /> ME
-            <Contactme />
+            {/* <Contactme /> */}
           </div>
         )}
       </motion.div>
