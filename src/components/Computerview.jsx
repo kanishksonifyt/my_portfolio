@@ -500,7 +500,7 @@ const Computerview = () => {
                   <p>
                     Hey there! I&apos;m{" "}
                     <span className="font-bold ">Kanishk Soni</span>, an
-                    18-year-old coding enthusiast hailing from the vibrant city
+                    19-year-old coding enthusiast hailing from the vibrant city
                     of Jaipur. Coding has been my passion for{" "}
                     <span className="font-semibold">{countdown} days</span>, and
                     in that time, I&apos;ve brought several exciting projects to

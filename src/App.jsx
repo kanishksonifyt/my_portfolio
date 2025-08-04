@@ -12,7 +12,6 @@ function ElasticCursor() {
   const [isOverDiv, setIsOverDiv] = React.useState(false);
 
   useEffect(() => {
-    let isMouseDown = false;
     const handleMouseMove = (e) => {
       target.current.x = e.clientX;
       target.current.y = e.clientY;
@@ -53,17 +52,7 @@ function ElasticCursor() {
       }
       setIsOverInput(isInput);
     };
-    const handleMouseDown = () => {
-      isMouseDown = true;
-      setIsGrabbing(true);
-    };
-    const handleMouseUp = () => {
-      isMouseDown = false;
-      setIsGrabbing(false);
-    };
     window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mousedown", handleMouseDown);
-    window.addEventListener("mouseup", handleMouseUp);
 
     const animate = () => {
       pos.current.x += (target.current.x - pos.current.x) * 0.2;
@@ -78,34 +67,15 @@ function ElasticCursor() {
     animate();
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mousedown", handleMouseDown);
-      window.removeEventListener("mouseup", handleMouseUp);
       cancelAnimationFrame(raf.current);
     };
   }, []);
 
   const [isOverInput, setIsOverInput] = React.useState(false);
-  const [isGrabbing, setIsGrabbing] = React.useState(false);
   const isClose = hoveredId === "Close";
   let cursorWidth = 32;
-  let cursorHeight = 32;
-  let borderRadius = 16;
-  let scale = 1;
-  if (isOverInput) {
-    cursorWidth = 8;
-    cursorHeight = 32;
-    borderRadius = 16;
-  } else if (isOverDiv) {
-    cursorWidth = 80;
-    cursorHeight = 32;
-    borderRadius = 16;
-  }
-  if (isGrabbing) {
-    cursorWidth = 36;
-    cursorHeight = 36;
-    borderRadius = 12;
-    scale = 1.25;
-  }
+  if (isOverInput) cursorWidth = 8;
+  else if (isOverDiv) cursorWidth = 80;
   return (
     <div
       ref={dotRef}
@@ -114,15 +84,15 @@ function ElasticCursor() {
         top: 0,
         left: 0,
         width: cursorWidth,
-        height: cursorHeight,
-        borderRadius: borderRadius,
+        height: 32,
+        borderRadius: 16,
         background: isClose ? "#e3342f" : "#fff",
         pointerEvents: "none",
         zIndex: 9999,
         boxShadow: isClose
           ? "0 0 12px 4px rgba(227,52,47,0.4)"
           : "0 0 8px 2px rgba(255,255,255,0.3)",
-        transition: "width 0.2s, height 0.2s, background 0.2s, box-shadow 0.2s, border-radius 0.2s, transform 0.2s",
+        transition: "width 0.2s, background 0.2s, box-shadow 0.2s",
         mixBlendMode: "difference",
         display: "flex",
         alignItems: "center",
@@ -131,9 +101,11 @@ function ElasticCursor() {
         color: isClose ? "#fff" : "#000",
         fontWeight: 700,
         userSelect: "none",
-        transform: `scale(${scale})`,
       }}
     >
+  
+
+
       {isOverDiv &&
         hoveredId &&
         hoveredId !== "root" &&

@@ -88,6 +88,7 @@ const Navbar = ({ clicked, updateClickedfive, setclicked }) => {
         />
         <div>
           <div
+            id="MenuButton"
             onMouseEnter={menudisplayfunction}
             onMouseLeave={startHideMenuTimeout}
             onClick={startHideMenuTimeout}
@@ -115,6 +116,7 @@ const Navbar = ({ clicked, updateClickedfive, setclicked }) => {
           </div>
 
           <div
+
             onMouseEnter={menudisplayfunction}
             onMouseLeave={() => setshowmwnu(false)}
             className={`flex flex-col justify-center items-center  backdrop-blur-xl left-[5vw] top-[13vh] rounded-2xl absolute transition-all duration-500 ${
@@ -134,6 +136,7 @@ const Navbar = ({ clicked, updateClickedfive, setclicked }) => {
                 onMouseLeave={() => setshowmwnu(false)}
               >
                 <button
+
                   onClick={updateClickedfive}
                   className="w-full py-3 hover:bg-zinc-700/50 transition-all"
                 >
@@ -141,6 +144,7 @@ const Navbar = ({ clicked, updateClickedfive, setclicked }) => {
                 </button>
                 <hr className="border-zinc-600" />
                 <button
+               
                   onClick={controlshowsocailpanel}
                   className="w-full py-3 hover:bg-zinc-700/50 transition-all"
                 >
@@ -173,6 +177,7 @@ const Navbar = ({ clicked, updateClickedfive, setclicked }) => {
             >
               {/* Close Button */}
               <button
+                id="Close"
                 onClick={controlshowsocailpanel}
                 className="absolute top-3 right-3 text-zinc-400 hover:text-white"
               >
@@ -185,6 +190,7 @@ const Navbar = ({ clicked, updateClickedfive, setclicked }) => {
                 {SocialLinks.map((item, index) => (
                   <motion.a
                     key={index}
+                    id={item.platform + "Link"}
                     whileHover={{ scale: 1.05 }}
                     href={item.id}
                     target="_blank"

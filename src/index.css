@@ -209,6 +209,11 @@ html {
   cursor: none; /* Hide default cursor */
 }
 
+::selection {
+  background: rgba(136, 127, 127, 0);
+  color: #fff;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 6px;
