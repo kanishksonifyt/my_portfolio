@@ -52,7 +52,7 @@ const Animation = () => {
   }, []);
 
   return (
-    <div className=" text-white h-[35vh] w-[97vw] overflow-x-hidden bg-transparent absolute flex items-center gap-7 justify-start">
+    <div className=" text-white h-[35vh] bg-black w-[97vw] overflow-x-hidden bg-transparent absolute flex items-center gap-7 justify-start">
       < ScrollVelocity texts={["kanishk soni 🔥", "Programmer 👨‍💻"]}
       velocity={123}
       className="custom-scroll-text  bg-black pb-5" />
