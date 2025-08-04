@@ -416,7 +416,7 @@ const Computerview = () => {
               </div>
               <div className="min-h-fit p-3 md:text-xl  lg:text-3xl 2xl:text-3xl w-full h-fit sm:w-[70%] font-['Aquire'] text-center">
                 My name is <span className="font-bold ">Kanishk Soni</span>. I
-                live in Jaipur and I am 18 years old. I have been coding for{" "}
+                live in Jaipur and I am {new Date().getFullYear() - 2005} years old. I have been coding for{" "}
                 <span className="font-semibold">{countdown} days</span>. I have
                 completed many projects, but some top projects are mentioned
                 here. You can visit my GitHub to view all my projects. I hope
