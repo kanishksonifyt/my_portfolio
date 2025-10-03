@@ -108,8 +108,9 @@ yarn build
 
 ## 📸 Screenshots
 
-![alt text](image.png)
-
+![Homepage](image.png)
+![profile](image-1.png)
+![project section](image-2.png)
 
 
 ---
