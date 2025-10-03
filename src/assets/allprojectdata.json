@@ -1,53 +1,72 @@
 [
-
-      {
-        "id":1,
-        "project_name": "kepapro",
-        "project_description": "Kepapro is your ultimate destination for streaming the latest anime episodes. Stay updated with new releases and explore our vast anime library.",
-        "photo_links": [
-          "https://i.imgur.com/xsfEIHn.png",
-          "https://i.imgur.com/sW2h3d5.png"
-        ],
-        "project_link":"https://kepapro.vercel.app/",
-        "video_link": "/videos/kepapro.mp4",
-        "project_Category":"fullstack"
-      },
-      {
-        "id":2,
-        "project_name": "Music school",
-        "project_description": "Explore the remarkable animations of this music school's webpage, guaranteed to captivate and leave a lasting impression with its stunning visual experience. ",
-        "photo_links": [
-          "https://i.imgur.com/MRfmQRD.png",
-          "https://i.imgur.com/v1y80ua.png"
-        ],
-        "project_link":"https://music-school-front-end.vercel.app/",
-        "video_link": "/videos/musicschool.mp4",
-        "project_Category":"frontend"
-      },
-      {
-        "id":3,
-        "project_name": "pinterest clone ",
-        "project_description": "This is my Pinterest-inspired project, utilizing MongoDB as the database management system. Users can register, log in, create pins, and even update their profile picture.",
-        "photo_links": [
-          "https://i.imgur.com/2OZxgJm.png",
-          "https://i.imgur.com/DZg9iZp.png"
-        ],
-        "project_link":"https://printrest.onrender.com/",
-        "video_link": "/videos/printerst.mp4",
-        "project_Category":"fullstack"
-      },
-      {
-        "id":4,
-        "project_name": "Magma",
-        "project_description": "This is project base on modern scrolling animation which you also see at apple's web pages .they are amazing at first I see the animation i was shocking but this type of animtion only work at desktops  ",
-        "photo_links": [
-          "https://i.imgur.com/bA7P2RL.png",
-          "https://i.imgur.com/yYqA2gV.png"
-        ],
-        "project_link":"https://kanishk1122.github.io/canvas-p-1/",
-        "video_link": "/videos/magma.mp4",
-        "project_Category":"frontend"
-      }
-    
+  {
+    "id": 1,
+    "project_name": "Shubham Jewellers CRM",
+    "project_description": "A full-stack web application for managing jewellery business operations — catalogs, orders, customers, and analytics dashboards.",
+    "photo_links": [
+      "https://i.pinimg.com/736x/02/35/a7/0235a7b6a2a138dc80487fff46d4b61f.jpg",
+      "https://i.pinimg.com/736x/c0/62/7e/c0627e4cdce345dc18e9d10934835b82.jpg"
+    ],
+    "project_link": "NO_LINK",
+    "video_link": "/videos/shubham_jewellers_demo.mp4",
+    "project_category": "fullstack",
+    "technologies_used": [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Mongoose",
+      "JWT (for authentication)",
+      "Bootstrap / Tailwind CSS",
+      "REST API"
     ]
-  
+  },
+  {
+    "id": 2,
+    "project_name": "kepapro",
+    "project_description": "Kepapro is your ultimate destination for streaming the latest anime episodes. Stay updated with new releases and explore our vast anime library.",
+    "photo_links": [
+      "https://i.imgur.com/xsfEIHn.png",
+      "https://i.imgur.com/sW2h3d5.png"
+    ],
+    "project_link": "https://kepapro.vercel.app/",
+    "video_link": "/videos/kepapro.mp4",
+    "project_Category": "fullstack"
+  },
+  {
+    "id": 3,
+    "project_name": "Music school",
+    "project_description": "Explore the remarkable animations of this music school's webpage, guaranteed to captivate and leave a lasting impression with its stunning visual experience. ",
+    "photo_links": [
+      "https://i.imgur.com/MRfmQRD.png",
+      "https://i.imgur.com/v1y80ua.png"
+    ],
+    "project_link": "https://music-school-front-end.vercel.app/",
+    "video_link": "/videos/musicschool.mp4",
+    "project_Category": "frontend"
+  },
+  {
+    "id": 4,
+    "project_name": "pinterest clone ",
+    "project_description": "This is my Pinterest-inspired project, utilizing MongoDB as the database management system. Users can register, log in, create pins, and even update their profile picture.",
+    "photo_links": [
+      "https://i.imgur.com/2OZxgJm.png",
+      "https://i.imgur.com/DZg9iZp.png"
+    ],
+    "project_link": "https://printrest.onrender.com/",
+    "video_link": "/videos/printerst.mp4",
+    "project_Category": "fullstack"
+  },
+  {
+    "id": 5,
+    "project_name": "Magma",
+    "project_description": "This is project base on modern scrolling animation which you also see at apple's web pages .they are amazing at first I see the animation i was shocking but this type of animtion only work at desktops  ",
+    "photo_links": [
+      "https://i.imgur.com/bA7P2RL.png",
+      "https://i.imgur.com/yYqA2gV.png"
+    ],
+    "project_link": "https://kanishk1122.github.io/canvas-p-1/",
+    "video_link": "/videos/magma.mp4",
+    "project_Category": "frontend"
+  }
+]

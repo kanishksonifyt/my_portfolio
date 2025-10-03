@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, Suspense, lazy } from "react";
 import { motion, useDragControls } from "framer-motion";
 import mypic from "../public/images/Untitled-transformed.jpeg";
 import video from "/videos/workportfilio.mp4";
@@ -11,9 +11,11 @@ import PixelTransition from "./utils/Pixelimage";
 import Animation from "./Animationtest";
 import housewithfishvideo from "../assets/original.mp4";
 import TextTransition, { presets } from "react-text-transition";
-import Clock from "./Clock";
-import Projects from "./Projects";
-import Contact from "./Contact";
+
+// Lazy imports
+const Clock = lazy(() => import("./Clock"));
+const Projects = lazy(() => import("./Projects"));
+const Contact = lazy(() => import("./Contact"));
 import PropTypes from "prop-types";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -416,7 +418,8 @@ const Computerview = () => {
               </div>
               <div className="min-h-fit p-3 md:text-xl  lg:text-3xl 2xl:text-3xl w-full h-fit sm:w-[70%] font-['Aquire'] text-center">
                 My name is <span className="font-bold ">Kanishk Soni</span>. I
-                live in Jaipur and I am {new Date().getFullYear() - 2005} years old. I have been coding for{" "}
+                live in Jaipur and I am {new Date().getFullYear() - 2005} years
+                old. I have been coding for{" "}
                 <span className="font-semibold">{countdown} days</span>. I have
                 completed many projects, but some top projects are mentioned
                 here. You can visit my GitHub to view all my projects. I hope
@@ -434,6 +437,7 @@ const Computerview = () => {
                   autoPlay
                   loop
                   src={housewithfishvideo}
+                  preload="none" // Lazy load video
                   className="w-[30vw] object-cover h-[25vw]"
                 ></video>
                 <div className="text-7xl w-full z-20 top-[17%] h-fit flex justify-center items-center absolute  ">
@@ -461,6 +465,7 @@ const Computerview = () => {
                   <img
                     src={mypic}
                     alt="default pixel transition content, a cat!"
+                    loading="lazy" // Lazy load image
                     className="w-full duration-200 h-full object-cover "
                   />
                 }
@@ -499,9 +504,10 @@ const Computerview = () => {
                 <>
                   <p>
                     Hey there! I&apos;m{" "}
-                    <span className="font-bold ">Kanishk Soni</span>, an
-                    {" "}{new Date().getFullYear() - 2005}-year-old coding enthusiast hailing from the vibrant city
-                    of Jaipur. Coding has been my passion for{" "}
+                    <span className="font-bold ">Kanishk Soni</span>, an{" "}
+                    {new Date().getFullYear() - 2005}-year-old coding enthusiast
+                    hailing from the vibrant city of Jaipur. Coding has been my
+                    passion for{" "}
                     <span className="font-semibold">{countdown} days</span>, and
                     in that time, I&apos;ve brought several exciting projects to
                     life. While I&apos;ve completed many, I&apos;ve highlighted
@@ -547,7 +553,9 @@ const Computerview = () => {
               onMouseEnter={getmouseneterofminizebutton}
               onMouseLeave={getmousexitrofminizebutton}
             />
-            <Clock />
+            <Suspense fallback={<div className="text-xl p-8">Loading...</div>}>
+              <Clock />
+            </Suspense>
           </div>
         ) : (
           <ShowTime />
@@ -588,7 +596,9 @@ const Computerview = () => {
               onMouseEnter={getmouseneterofminizebutton}
               onMouseLeave={getmousexitrofminizebutton}
             />
-            <Projects />
+            <Suspense fallback={<div className="text-xl p-8">Loading...</div>}>
+              <Projects />
+            </Suspense>
           </div>
         ) : (
           <div id="Projects">
@@ -598,6 +608,7 @@ const Computerview = () => {
               autoPlay
               muted
               loop
+              preload="none" // Lazy load video
             ></video>
             <div className=" -top-[0%]  rounded-xl flex justify-center items-center  w-full h-full bg-black absolute mix-blend-multiply selection:bg-black  text-3xl ">
               <div className="flex justify-center items-center text-7xl font-extrabold ">
@@ -730,7 +741,9 @@ const Computerview = () => {
               onMouseEnter={getmouseneterofminizebutton}
               onMouseLeave={getmousexitrofminizebutton}
             />
-            <Contact />
+            <Suspense fallback={<div className="text-xl p-8">Loading...</div>}>
+              <Contact />
+            </Suspense>
           </div>
         ) : (
           <div
