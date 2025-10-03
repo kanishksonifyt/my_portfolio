@@ -108,14 +108,16 @@ yarn build
 
 ## 📸 Screenshots
 
-_You can add screenshots here later for a better visual preview of your site._
+![alt text](image.png)
+
+
 
 ---
 
 ## 📫 Contact
 
 - GitHub: [@kanishk1122](https://github.com/kanishk1122)
-- Email: [kanishk21soni@gmail.com](mailto:kanishk21soni@gmail.com) _(Update this with your actual email)_
+- Email: [kanishk21soni@gmail.com](mailto:kanishk21soni@gmail.com)
 
 ---
 
