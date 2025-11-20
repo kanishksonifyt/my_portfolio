@@ -25,9 +25,6 @@ gsap.registerPlugin(ScrollTrigger);
 const grabSoundUrl = "/sounds/grab.mp3";
 const dropSoundUrl = "/sounds/drop.mp3";
 
-// ============================================================================
-// === 1. COMPLEX JS BACKGROUND (Space/Neural Network) ===
-// ============================================================================
 const BG = () => {
   const canvasRef = useRef(null);
   
@@ -230,9 +227,6 @@ return (
   );
 };
 
-// ============================================================================
-// === 2. BOOT SEQUENCE ANIMATION ===
-// ============================================================================
 const BootSequence = ({ onComplete }) => {
   const [lines, setLines] = useState([]);
   const bootText = [
@@ -294,9 +288,6 @@ const BootSequence = ({ onComplete }) => {
   );
 };
 
-// ============================================================================
-// === 3. WINDOW FRAME (With Maximize/Minimize/Close) ===
-// ============================================================================
 const WindowFrame = ({ title, children, onClose, constraintsRef }) => {
   const [isMaximized, setIsMaximized] = useState(false);
 
@@ -352,9 +343,7 @@ const WindowFrame = ({ title, children, onClose, constraintsRef }) => {
   );
 };
 
-// ============================================================================
-// === 4. DESKTOP ICON ===
-// ============================================================================
+
 const DesktopIcon = ({ label, onClick, children, delay, constraintsRef }) => {
   const grabSoundRef = useRef(new Audio(grabSoundUrl));
   const dropSoundRef = useRef(new Audio(dropSoundUrl));
@@ -388,9 +377,7 @@ const DesktopIcon = ({ label, onClick, children, delay, constraintsRef }) => {
   );
 };
 
-// ============================================================================
-// === MAIN COMPONENT ===
-// ============================================================================
+
 
 const Computerview = () => {
   const constraintsRef = useRef(null);
