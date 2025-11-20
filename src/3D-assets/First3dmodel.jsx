@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Suspense, useEffect, useState, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
@@ -18,9 +19,25 @@ const ModelRig = ({ children }) => {
     }
   });
   return <group ref={group}>{children}</group>;
+=======
+import { Suspense, useEffect, useState } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import ComputersCanvas from "./Computer";
+import Loader from "../components/Loader";
+
+const draggableStyle = {
+  cursor: "grab",
+  // cursor: 'url(images/grab.cur), grab',
+};
+
+const activeDraggableStyle = {
+  cursor: "url(images/grabbing.cur), grabbing",
+>>>>>>> parent of a9860d3 (Refactor Contact, Home, and Projects components for improved UX and functionality)
 };
 
 const First3dmodel = () => {
+  const [isDragging, setIsDragging] = useState(false);
   const [hideModel, setHideModel] = useState(
     typeof window !== "undefined" &&
       sessionStorage.getItem("fullscreenVideoActive") === "true"
@@ -33,14 +50,16 @@ const First3dmodel = () => {
         sessionStorage.getItem("fullscreenVideoActive") === "true";
       setHideModel(active);
     };
+    // Listen for storage changes and also check on mount
     window.addEventListener("storage", checkFullscreen);
-    const interval = setInterval(checkFullscreen, 300);
+    const interval = setInterval(checkFullscreen, 300); // Poll for session changes
     return () => {
       window.removeEventListener("storage", checkFullscreen);
       clearInterval(interval);
     };
   }, []);
 
+  // Fade animation classes
   const fadeClass = hideModel
     ? "opacity-0 pointer-events-none transition-opacity duration-500"
     : "opacity-100 transition-opacity duration-500";
@@ -48,8 +67,14 @@ const First3dmodel = () => {
   if (hideModel) return null;
 
   return (
-    <div className={`w-fit ${fadeClass}`}>
-      <section className="w-full h-[300px] relative">
+    <div
+      className={`w-fit cursor-grab ${fadeClass}`}
+      style={isDragging ? activeDraggableStyle : draggableStyle}
+      onMouseDown={() => setIsDragging(true)}
+      onMouseUp={() => setIsDragging(false)}
+      onMouseLeave={() => setIsDragging(false)}
+    >
+      <section className="w-full h-[300px] relative ">
         <Canvas
           className="w-full h-screen bg-transparent"
           shadows
@@ -78,11 +103,16 @@ const First3dmodel = () => {
             <pointLight intensity={0.5} position={[-10, -10, -5]} />
             <spotLight intensity={0.6} position={[5, 5, 5]} angle={0.8} />
             <hemisphereLight intensity={0.5} />
+<<<<<<< HEAD
 
             <ModelRig>
               <ComputersCanvas position={[0, 0, 0]} scale={[0.1, 0.1, 0.1]} />
             </ModelRig>
             
+=======
+            <OrbitControls />
+            <ComputersCanvas position={[0, 0, 0]} scale={[0.1, 0.1, 0.1]} />
+>>>>>>> parent of a9860d3 (Refactor Contact, Home, and Projects components for improved UX and functionality)
           </Suspense>
         </Canvas>
       </section>
